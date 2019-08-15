@@ -1,6 +1,6 @@
-# bloc_app
+# Bloc Flutter
 
-A new Flutter project.
+My first Flutter project which using Bloc Pattern.
 
 ## Getting Started
 
