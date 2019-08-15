@@ -1,13 +1,10 @@
 import 'package:bloc_app/data/models/transaction.dart';
 
 class TransactionCache {
-  final _cache = <Transaction>[];
+  Transaction _transactionCache;
 
-  List<Transaction> get() => _cache;
+  Transaction get transactionCache => _transactionCache;
 
-  void set(Transaction result) => _cache.add(result);
-
-  bool contains(Transaction result) => _cache.contains(result);
-
-  void remove(Transaction result) => _cache.remove(result);
+  set transactionCache(Transaction transactionCache) =>
+      _transactionCache = transactionCache;
 }
