@@ -1,4 +1,6 @@
-class TransactionItem {
+import 'package:equatable/equatable.dart';
+
+class TransactionItem extends Equatable {
   String type_jrn;
   String date_jrn;
   String telephone_dest;

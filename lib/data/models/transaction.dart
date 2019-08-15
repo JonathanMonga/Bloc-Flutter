@@ -1,6 +1,7 @@
 import 'package:bloc_app/data/models/transaction_item.dart';
+import 'package:equatable/equatable.dart';
 
-class Transaction {
+class Transaction extends Equatable {
   String resultat;
   List<TransactionItem> transactions;
 
