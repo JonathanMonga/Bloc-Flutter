@@ -6,7 +6,7 @@ class Transaction {
 
   Transaction({this.resultat, this.transactions});
 
-  static Transaction formJson(dynamic json) {
+  static Transaction fromJson(dynamic json) {
     return Transaction(
         resultat: json['resultat'], transactions: json['transactions']);
   }
