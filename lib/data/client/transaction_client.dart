@@ -14,13 +14,9 @@ class TransactionClient {
       : this.httpClient = httpClient ?? http.Client();
 
   Future<Transaction> getTransactions(String telephone) async {
-    print("getTransactions");
-
     final response = await httpClient.post(Uri.parse("$baseUrl"),
         body: {"ent": "rapport", "telephone": telephone});
     final results = json.decode(response.body);
-
-    print("Resultat : " + results);
 
     if (response.statusCode == 200) {
       return Transaction.fromJson(results);
