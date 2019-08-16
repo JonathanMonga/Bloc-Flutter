@@ -39,12 +39,11 @@ class _HomePageState extends State<_HomePage> {
             title: Text('Maishapay Transactions'),
             actions: <Widget>[
               IconButton(
-                icon: Icon(
-                  Icons.refresh,
-                  color: Colors.white,
-                ),
-                onPressed: _onPressed(),
-              )
+                  icon: Icon(
+                    Icons.refresh,
+                    color: Colors.white,
+                  ),
+                  onPressed: null)
             ],
           ),
           body: BlocProvider<TransactionBloc>(
@@ -52,11 +51,5 @@ class _HomePageState extends State<_HomePage> {
             child: TransactionWidget(),
           )),
     );
-  }
-
-  _onPressed() {
-    setState(() {
-      BlocProvider.of<TransactionBloc>(context).dispatch(LoadingEvent());
-    });
   }
 }

@@ -59,6 +59,12 @@ class _TransactionListViewState extends State<_TransactionListView> {
         },
         bloc: _transactionBloc);
   }
+
+  void refresh() {
+    setState(() {
+      BlocProvider.of<TransactionBloc>(context).dispatch(LoadingEvent());
+    });
+  }
 }
 
 class _TransactionResults extends StatelessWidget {
