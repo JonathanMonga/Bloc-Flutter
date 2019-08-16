@@ -16,12 +16,13 @@ class TransactionStateLoading extends TransactionState {
 }
 
 class TransactionStateSuccess extends TransactionState {
-  final List<Transaction> items;
+  final Transaction items;
 
   TransactionStateSuccess(this.items) : super([items]);
 
   @override
-  String toString() => 'TransactionStateSuccess { items: ${items.length} }';
+  String toString() =>
+      'TransactionStateSuccess { items: ${items.transactions.length} }';
 }
 
 class TransactionStateError extends TransactionState {
