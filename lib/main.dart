@@ -1,5 +1,4 @@
 import 'package:bloc_app/blocs/transaction_bloc.dart';
-import 'package:bloc_app/blocs/transaction_event.dart';
 import 'package:bloc_app/data/client/transaction_client.dart';
 import 'package:bloc_app/data/repositories/repository.dart';
 import 'package:bloc_app/data/repositories/transaction_repository.dart';
