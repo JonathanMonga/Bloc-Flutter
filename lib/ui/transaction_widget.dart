@@ -27,32 +27,34 @@ class _TransactionListViewState extends State<_TransactionListView> {
   void initState() {
     super.initState();
     _transactionBloc = BlocProvider.of<TransactionBloc>(context);
-
-    _transactionBloc.dispatch(LoadingEvent());
   }
 
   @override
   void dispose() {
     super.dispose();
+    _transactionBloc.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TransactionBloc, TransactionState>(
+    _transactionBloc.dispatch(LoadingEvent());
+
+    return BlocBuilder<TransactionEvent, TransactionState>(
         builder: (context, state) {
-      if (state is TransactionStateLoading) {
-        return CircularProgressIndicator();
-      }
-      if (state is TransactionStateError) {
-        return Text(state.error);
-      }
-      if (state is TransactionStateSuccess) {
-        return state.items.transactions.isEmpty
-            ? Text('No Results')
-            : Expanded(child: _TransactionResults(items: state.items));
-      }
-      return Text('Please enter a term to begin');
-    });
+          if (state is TransactionStateLoading) {
+            return CircularProgressIndicator();
+          }
+          if (state is TransactionStateError) {
+            return Text(state.error);
+          }
+          if (state is TransactionStateSuccess) {
+            return state.items.transactions.isEmpty
+                ? Text('No Results')
+                : Expanded(child: _TransactionResults(items: state.items));
+          }
+          return Text('Please enter a term to begin');
+        },
+        bloc: _transactionBloc);
   }
 }
 

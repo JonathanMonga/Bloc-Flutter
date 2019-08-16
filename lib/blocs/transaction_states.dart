@@ -21,8 +21,7 @@ class TransactionStateSuccess extends TransactionState {
   TransactionStateSuccess(this.items) : super([items]);
 
   @override
-  String toString() =>
-      'TransactionStateSuccess { items: ${items.transactions.length} }';
+  String toString() => 'TransactionStateSuccess';
 }
 
 class TransactionStateError extends TransactionState {

@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:bloc/bloc.dart';
 import 'package:bloc_app/blocs/transaction_event.dart';
 import 'package:bloc_app/blocs/transaction_states.dart';
 import 'package:bloc_app/data/models/transaction_error.dart';
 import 'package:bloc_app/data/repositories/repository.dart';
 import 'package:bloc_app/data/repositories/transaction_repository.dart';
 import 'package:meta/meta.dart';
-import 'package:bloc/bloc.dart';
 
 class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final Repository repository;
@@ -29,8 +29,6 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
     if (event is LoadingEvent) {
       final String telephone =
           "243996980422"; //Normaly the event is comming with data Ex: event.data
-
-      yield TransactionStateLoading();
 
       try {
         final results = await (repository as TransactionRepository)
