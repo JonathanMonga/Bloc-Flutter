@@ -10,6 +10,7 @@ class TransactionWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[_TransactionListView()],
     );
   }
@@ -42,7 +43,9 @@ class _TransactionListViewState extends State<_TransactionListView> {
     return BlocBuilder<TransactionEvent, TransactionState>(
         builder: (context, state) {
           if (state is TransactionStateLoading) {
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           }
           if (state is TransactionStateError) {
             return Text(state.error);
@@ -83,7 +86,7 @@ class _TransactionResultItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(child: Text(item.prenom_dest.substring(0, 2))),
+      leading: CircleAvatar(child: Text(item.prenom_dest.substring(0, 1))),
       title: Text(item.type_jrn == "e"
           ? "Envoie a ${item.prenom_dest} ${item.nom_dest}"
           : "Reception de ${item.prenom_dest} ${item.nom_dest}"),

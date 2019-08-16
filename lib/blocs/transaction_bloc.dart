@@ -26,6 +26,7 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   @override
   Stream<TransactionState> mapEventToState(
       TransactionState currentState, TransactionEvent event) async* {
+    print("mapEventToState");
     if (event is LoadingEvent) {
       final String telephone =
           "243996980422"; //Normaly the event is comming with data Ex: event.data
@@ -33,8 +34,11 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       try {
         final results = await (repository as TransactionRepository)
             .getTransactions(telephone);
+
+        print(results.resultat);
         yield TransactionStateSuccess(results);
       } catch (error) {
+        print(error.toString());
         yield error is TransactionError
             ? TransactionStateError(error: error.message)
             : TransactionStateError(error: 'something went wrong');

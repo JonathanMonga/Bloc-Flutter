@@ -8,8 +8,12 @@ class TransactionRepository extends Repository {
       : super(cache, client);
 
   Future<Transaction> getTransactions(String telephone) async {
-    final result = await client.getTransactions(telephone);
-    cache.transactionCache = result;
-    return result;
+    if (cache.transactionCache != null) {
+      return cache.transactionCache;
+    } else {
+      final result = await client.getTransactions(telephone);
+      cache.transactionCache = result;
+      return result;
+    }
   }
 }
