@@ -28,7 +28,7 @@ class TransactionStateSuccess extends TransactionState {
 class TransactionStateError extends TransactionState {
   final String error;
 
-  TransactionStateError(this.error) : super([error]);
+  TransactionStateError({this.error}) : super([error]);
 
   @override
   String toString() => 'TransactionStateError';

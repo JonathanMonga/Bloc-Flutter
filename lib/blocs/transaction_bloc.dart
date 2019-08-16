@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc_app/blocs/transaction_event.dart';
 import 'package:bloc_app/blocs/transaction_states.dart';
+import 'package:bloc_app/data/models/transaction_error.dart';
 import 'package:bloc_app/data/repositories/repository.dart';
 import 'package:bloc_app/data/repositories/transaction_repository.dart';
 import 'package:meta/meta.dart';
@@ -10,7 +11,7 @@ import 'package:bloc/bloc.dart';
 class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   final Repository repository;
 
-  GithubSearchBloc({@required this.repository});
+  TransactionBloc({@required this.repository});
 
   @override
   void onTransition(
@@ -23,7 +24,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   TransactionState get initialState => TransactionStateLoading();
 
   @override
-  Stream<TransactionState> mapEventToState(TransactionEvent event) async* {
+  Stream<TransactionState> mapEventToState(
+      TransactionState currentState, TransactionEvent event) async* {
     if (event is LoadingEvent) {
       final String telephone =
           "243996980422"; //Normaly the event is comming with data Ex: event.data
@@ -35,9 +37,9 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
             .getTransactions(telephone);
         yield TransactionStateSuccess(results);
       } catch (error) {
-        yield error is SearchResultError
-            ? SearchStateError(error.message)
-            : SearchStateError('something went wrong');
+        yield error is TransactionError
+            ? TransactionStateError(error: error.message)
+            : TransactionStateError(error: 'something went wrong');
       }
     }
   }
