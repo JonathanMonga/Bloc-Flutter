@@ -92,11 +92,11 @@ class _TransactionResultItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: CircleAvatar(child: Text(item.prenom_dest.substring(0, 1))),
-      title: Text(item.type_jrn == "e"
-          ? "Envoie a ${item.prenom_dest} ${item.nom_dest}"
-          : "Reception de ${item.prenom_dest} ${item.nom_dest}"),
-      subtitle: Text("${item.montant_jrn} ${item.monnaie_jrn}"),
+      leading: CircleAvatar(child: Text(item.prenomDest.substring(0, 1))),
+      title: Text(item.typeJrn == "e"
+          ? "Envoie a ${item.prenomDest} ${item.nomDest}"
+          : "Reception de ${item.prenomDest} ${item.nomDest}"),
+      subtitle: Text("${item.montantJrn} ${item.monnaieJrn}"),
       onTap: () async {},
     );
   }
