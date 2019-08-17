@@ -1,31 +1,31 @@
 import 'package:equatable/equatable.dart';
 
 class TransactionItem extends Equatable {
-  String type_jrn;
-  String date_jrn;
-  String telephone_dest;
-  String montant_jrn;
-  String monnaie_jrn;
-  String nom_dest;
-  String prenom_dest;
+  String typeJrn;
+  String dateJrn;
+  String telephoneDest;
+  String montantJrn;
+  String monnaieJrn;
+  String nomDest;
+  String prenomDest;
 
   TransactionItem(
-      {this.type_jrn,
-      this.date_jrn,
-      this.telephone_dest,
-      this.montant_jrn,
-      this.monnaie_jrn,
-      this.nom_dest,
-      this.prenom_dest});
+      {this.typeJrn,
+      this.dateJrn,
+      this.telephoneDest,
+      this.montantJrn,
+      this.monnaieJrn,
+      this.nomDest,
+      this.prenomDest});
 
   static TransactionItem fromJson(dynamic json) {
     return TransactionItem(
-        type_jrn: json['type_jrn'],
-        date_jrn: json['date_jrn'],
-        telephone_dest: json['telephone_dest'],
-        montant_jrn: json['montant_jrn'],
-        monnaie_jrn: json['monnaie_jrn'],
-        nom_dest: json['nom_dest'],
-        prenom_dest: json['prenom_dest']);
+        typeJrn: json['type_jrn'],
+        dateJrn: json['date_jrn'],
+        telephoneDest: json['telephone_dest'],
+        montantJrn: json['montant_jrn'],
+        monnaieJrn: json['monnaie_jrn'],
+        nomDest: json['nom_dest'],
+        prenomDest: json['prenom_dest']);
   }
 }
